@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <title>Frontend Mentor | Calculator app</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body theme="1">
+    <main class="calculator">
+      <div class="title-container">
+        <h4>calc</h4>
+        <p>theme</p>
+        <div class="theme-container">
+          <div class="theme-label-container">
+            <label class="theme-label" for="theme-1">1</label>
+            <label class="theme-label" for="theme-2">2</label>
+            <label class="theme-label" for="theme-3">3</label>
+          </div>
+          <div class="theme-circle-container">
+            <input
+              class="theme-circle"
+              type="radio"
+              id="theme-1"
+              name="theme"
+              value="1"
+            />
+            <input
+              class="theme-circle"
+              type="radio"
+              id="theme-2"
+              name="theme"
+              value="2"
+            />
+            <input
+              class="theme-circle"
+              type="radio"
+              id="theme-3"
+              name="theme"
+              value="3"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="screen-container">
+        <p class="old-value"></p>
+        <h2 class="result"></h2>
+      </div>
+      <div class="key-container">
+        <button class="number">7</button>
+        <button class="number">8</button>
+        <button class="number">9</button>
+        <button class="delete">DEL</button>
+        <button class="number">4</button>
+        <button class="number">5</button>
+        <button class="number">6</button>
+        <button class="operator">+</button>
+        <button class="number">1</button>
+        <button class="number">2</button>
+        <button class="number">3</button>
+        <button class="operator">-</button>
+        <button class="number">.</button>
+        <button class="number">0</button>
+        <button class="operator">/</button>
+        <button class="operator">×</button>
+        <button class="reset">RESET</button>
+        <button class="equals">=</button>
+      </div>
+    </main>
+
+    <footer class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by
+      <a href="https://github.com/myat-htar" target="_blank">Myat Htar</a>.
+    </footer>
+    <script src="./script.js"></script>
+  </body>
+</html>
