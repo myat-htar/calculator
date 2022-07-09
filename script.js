@@ -7,14 +7,14 @@ let currentNumber = "";
 let oldNumber = "";
 let operator;
 // CHANGING AND STORING THEME
-document.body.setAttribute("theme", theme);
+document.body.setAttribute("data-theme", theme);
 themeCircles.forEach((themeCircle) => {
   if (themeCircle.value == theme) {
-    themeCircle.setAttribute("checked", true);
+    themeCircle.setAttribute("checked", "");
   }
   themeCircle.addEventListener("change", (e) => {
     localStorage.setItem("theme", e.target.value);
-    document.body.setAttribute("theme", e.target.value);
+    document.body.setAttribute("data-theme", e.target.value);
   });
 });
 // OPERATE CALCULATION

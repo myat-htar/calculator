@@ -28,7 +28,7 @@ body {
   background-color: var(--main-background);
   color: var(--title-text);
 }
-body[theme="1"] {
+body[data-theme="1"] {
   --main-background: hsl(222, 26%, 31%);
   --keypad-background: hsl(223, 31%, 20%);
   --screen-background: hsl(224, 36%, 15%);
@@ -48,7 +48,7 @@ body[theme="1"] {
   --reset-del-key-hover-background: hsl(225, 31%, 60%);
   --equals-key-hover-background: hsl(6, 76%, 59%);
 }
-body[theme="2"] {
+body[data-theme="2"] {
   --main-background: hsl(0, 0%, 90%);
   --keypad-background: hsl(0, 5%, 81%);
   --screen-background: hsl(0, 0%, 93%);
@@ -68,7 +68,7 @@ body[theme="2"] {
   --reset-del-key-hover-background: hsl(185, 45%, 57%);
   --equals-key-hover-background: hsl(25, 100%, 64%);
 }
-body[theme="3"] {
+body[data-theme="3"] {
   --main-background: hsl(268, 75%, 9%);
   --keypad-background: hsl(268, 71%, 12%);
   --screen-background: hsl(268, 71%, 12%);
@@ -102,11 +102,11 @@ body[theme="3"] {
   align-items: flex-end;
   color: var(--title-text);
 }
-.title-container h2 {
+.title-container h1 {
   font-size: 1.8rem;
   margin-right: auto;
 }
-.title-container p {
+.title-container h2 {
   font-size: 0.6rem;
   font-weight: 700;
   letter-spacing: 1px;
