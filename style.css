@@ -26,6 +26,7 @@ body {
   font-size: 1rem;
   font-family: "League Spartan", sans-serif;
   background-color: var(--main-background);
+  color: var(--title-text);
 }
 body[theme="1"] {
   --main-background: hsl(222, 26%, 31%);
@@ -101,7 +102,7 @@ body[theme="3"] {
   align-items: flex-end;
   color: var(--title-text);
 }
-.title-container h3 {
+.title-container h2 {
   font-size: 1.8rem;
   margin-right: auto;
 }
@@ -209,6 +210,15 @@ body[theme="3"] {
 .key-container button.reset,
 .key-container button.equals {
   grid-column: 2 span;
+}
+/* sidenote for keyboard*/
+.sidenote ul {
+  padding: 0 2rem;
+  margin: 0.5rem 0;
+  font-size: 0.8rem;
+}
+.sidenote ul li {
+  line-height: 140%;
 }
 .attribution {
   font-size: 0.9rem;

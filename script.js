@@ -2,7 +2,7 @@ let theme = localStorage.getItem("theme") || 1;
 let themeCircles = document.querySelectorAll(".theme-circle");
 let buttons = document.querySelectorAll(".key-container button");
 let oldValue = document.querySelector(".old-value");
-let result = document.querySelector(".result");
+let resultValue = document.querySelector(".result");
 let currentNumber = "";
 let oldNumber = "";
 let operator;
@@ -22,20 +22,17 @@ buttons.forEach((button) => {
   button.addEventListener("click", (e) => {
     if (e.target.classList.contains("number")) {
       addToCurrentNumber(e.target.textContent);
-      updateDisplay();
     } else if (e.target.classList.contains("operator")) {
       chooseOperation(e.target.textContent);
-      updateDisplay();
     } else if (e.target.classList.contains("reset")) {
       reset();
-      updateDisplay();
     } else if (e.target.classList.contains("equals")) {
       calculateOperation();
-      updateDisplay();
     } else {
       deleteData();
-      updateDisplay();
     }
+
+    updateDisplay();
   });
 });
 
@@ -46,7 +43,6 @@ function addToCurrentNumber(value) {
 }
 function chooseOperation(op) {
   if (currentNumber == "") {
-    oldValue.textContent = "You have to type number first!";
     return;
   }
   if (oldNumber !== "") calculateOperation();
@@ -57,9 +53,11 @@ function chooseOperation(op) {
 function reset() {
   currentNumber = "";
   oldNumber = "";
+  operator = undefined;
 }
 function deleteData() {
-  currentNumber = currentNumber.slice(0, currentNumber.length - 1);
+  if (typeof currentNumber == "string")
+    currentNumber = currentNumber.slice(0, -1);
 }
 function calculateOperation() {
   let result;
@@ -74,6 +72,7 @@ function calculateOperation() {
       result = oldNumber - currentNumber;
       break;
     case "×":
+    case "*":
       result = oldNumber * currentNumber;
       break;
     case "/":
@@ -85,10 +84,15 @@ function calculateOperation() {
   operator = undefined;
 }
 function updateNumberFormat(number) {
-  let integer = String(number).split(".")[0];
+  let integer = parseFloat(String(number).split(".")[0]);
   let decimal = String(number).split(".")[1];
   let integerDisplay;
-  integerDisplay = Number(integer).toLocaleString("en");
+  if (isNaN(integer)) {
+    integerDisplay = "";
+  } else {
+    integerDisplay = integer.toLocaleString("en");
+  }
+
   if (decimal != null) {
     return `${integerDisplay}.${decimal}`;
   } else {
@@ -96,9 +100,23 @@ function updateNumberFormat(number) {
   }
 }
 function updateDisplay() {
-  result.textContent = currentNumber;
-  result.textContent = updateNumberFormat(currentNumber);
+  resultValue.textContent = updateNumberFormat(currentNumber);
   operator !== undefined
     ? (oldValue.textContent = `${updateNumberFormat(oldNumber)} ${operator}`)
-    : (oldValue.textContent = "");
+    : (oldValue.textContent = oldNumber);
 }
+// make calculations work with keyboard
+document.addEventListener("keydown", (e) => {
+  let numbers = /\d/;
+  let operators = ["+", "-", "*", "/"];
+  if (e.key.match(numbers) || e.key == ".") {
+    addToCurrentNumber(e.key);
+  } else if (operators.includes(e.key)) {
+    chooseOperation(e.key);
+  } else if (e.key === "=" || e.key === "Enter") {
+    calculateOperation();
+  } else if (e.key === "Delete") {
+    e.shiftKey ? reset() : deleteData();
+  }
+  updateDisplay();
+});
